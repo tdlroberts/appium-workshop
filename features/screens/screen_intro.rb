@@ -16,6 +16,7 @@ class ScreenIntro < ScreenBase
   end
 
   def visible?
+    #click the no email notification button
     driver.find_element(:class_name, 'android.widget.Button').click()
     @driver.find_element(@base[:type], @base[:value])
     @driver.find_element(@button_close_intro[:type], @button_close_intro[:value])
