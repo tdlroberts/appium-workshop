@@ -22,4 +22,10 @@ class Screens
     @screen_set_filter_parameters ||= ScreenSetFilterParameters.new @driver
     @screen_set_filter_parameters
   end
+
+  def screen_filter_parameters
+    @screen_filter_parameters ||= ScreenFilterParameters.new @driver
+    @screen_filter_parameters
+  end
+
 end
