@@ -1,10 +1,11 @@
+require_relative '../screens/screen_base'
+
 class TestAddFilter
   attr_accessor :driver
   def initialize(screens)
     @screens = screens
+    @data = Filter.new('property_positive')
   end
-
-  #Filter_name = 'Ventspils2'  #Constant that can be accessed within this class and all of its functions
 
   def select_category(category)
     @screens.screen_create_filter.visible?
@@ -12,23 +13,23 @@ class TestAddFilter
   end
 
   def select_type
-    @screens.screen_select_sub_category.visible?('Nekustamie īpašumi')
-    @screens.screen_select_sub_category.select_sub_category 'Zeme'
+    @screens.screen_select_sub_category.visible?(@data.sub_categories[0]['title'])
+    @screens.screen_select_sub_category.select_sub_category @data.sub_categories[0]['option']
   end
 
   def select_district
-    @screens.screen_select_sub_category.visible?('Zeme')
-    @screens.screen_select_sub_category.select_sub_category 'Ventspils un rajons'
+    @screens.screen_select_sub_category.visible?(@data.sub_categories[1]['title'])
+    @screens.screen_select_sub_category.select_sub_category @data.sub_categories[1]['option']
   end
 
   def select_town
-    @screens.screen_select_sub_category.visible?('Ventspils un rajons')
-    @screens.screen_select_sub_category.select_sub_category 'Visi'
+    @screens.screen_select_sub_category.visible?(@data.sub_categories[2]['title'])
+    @screens.screen_select_sub_category.select_sub_category @data.sub_categories[2]['option']
   end
 
   def select_action
-    @screens.screen_select_sub_category.visible?('Darbība')
-    @screens.screen_select_sub_category.select_sub_category 'Visi'
+    @screens.screen_select_sub_category.visible?(@data.sub_categories[3]['title'])
+    @screens.screen_select_sub_category.select_sub_category @data.sub_categories[3]['option']
   end
 
   def submit_filter_parameters
@@ -38,7 +39,7 @@ class TestAddFilter
 
   # Create an empty filter
   def create_empty_filter
-    select_category 'Nekustamie īpašumi'
+    select_category @data.category
     select_type
     select_district
     select_town
@@ -48,17 +49,17 @@ class TestAddFilter
 
 
 def enter_name
-  @screens.screen_set_filter_parameters.set_name('Ventspils2')
+  @screens.screen_set_filter_parameters.set_name(@data.name)
 end
 
 def set_price
   @screens.screen_set_filter_parameters.visible?
-  @screens.screen_set_filter_parameters.set_parameter('CENA (EUR)', '4', '18')
+  @screens.screen_set_filter_parameters.set_parameter(@data.parameters[0]['name'], @data.parameters[0]['left'], @data.parameters[0]['right'])
 end
 
 def set_area
   @screens.screen_set_filter_parameters.visible?
-  @screens.screen_set_filter_parameters.set_parameter('PLATĪBA (M2)', '21', '212')
+  @screens.screen_set_filter_parameters.set_parameter(@data.parameters[1]['name'], @data.parameters[1]['left'], @data.parameters[1]['right'])
 end
 
 def check_filter_created
