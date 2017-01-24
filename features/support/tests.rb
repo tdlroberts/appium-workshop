@@ -12,4 +12,10 @@ class Tests
     @test_add_filter ||= TestAddFilter.new(@screens)
     @test_add_filter
   end
+
+  def test_validate_filter
+    @test_validate_filter ||= TestValidateFilter.new(@screens)
+    @test_validate_filter
+  end
+
 end

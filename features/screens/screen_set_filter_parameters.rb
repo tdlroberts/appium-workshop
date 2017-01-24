@@ -4,6 +4,9 @@ class ScreenSetFilterParameters < ScreenBase
     @parameter_holders = element(:id, 'parameter_body_holder') # An array of Relative layouts
     @filter_name = element(:id, 'param_filter_name')
     @button_save = element(:id, 'save_filter')
+    @parameter_name = element(:id, 'parameter_name')
+    @parameter_left = element(:id, 'left_param')
+    @parameter_right = element(:id, 'right_param')
     @driver = driver
   end
 
@@ -21,22 +24,23 @@ class ScreenSetFilterParameters < ScreenBase
     ).type(text_name)
   end
 
-  def set_cell_value(text_view_value, edit_text_value, location)
+  def save_filter
+    @driver.find_element(
+      @button_save[:type], @button_save[:value]
+    ).click
+  end
+
+  def set_parameter(parameter, param_left, param_right)
     @driver.find_elements(
       @parameter_holders[:type], @parameter_holders[:value]
     #find all relative layouts in array iterate through them until a relative layout is found
     ).each do |row|
       # iterate to next layout unless it contains TextView with appropriate text
-      next unless row.find_element(:id, 'parameter_name').text == text_view_value
-      row.find_element(:id, location).send_keys(edit_text_value)
+      next unless row.find_element(@parameter_name[:type], @parameter_name[:value]).text == parameter
+      row.find_element(@parameter_left[:type], @parameter_left[:value]).send_keys(param_left)
+      row.find_element(@parameter_right[:type], @parameter_right[:value]).send_keys(param_right)
       break
     end
-  end
-
-  def save_filter
-    @driver.find_element(
-      @button_save[:type], @button_save[:value]
-    ).click
   end
 
 end

@@ -14,18 +14,20 @@ class ScreenFilterParameters < ScreenBase
     end
   end
 
+#check if filter exists
  def validate_filter(filter_name)
       exists = false
      @driver.find_elements(
        @row_filter_name[:type], @row_filter_name[:value]
      ).each do |row|
        next unless row.text == filter_name
+          row.displayed?
           exists = true
        break
      end
      # if filter does not exist fail the test
-     if exists
-       fail('Filter: ' + filter_name + 'does not exist')
+     if !exists
+       fail('Filter: ' + filter_name + ' does not exist')
      end
  end
 end

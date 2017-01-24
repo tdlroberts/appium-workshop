@@ -30,14 +30,14 @@ Given /^I am on create filter screen$/ do
   @tests.test_intro.close_intro
 end
 
-When /^I create empty property filter$/ do
+Given /^I create empty property filter$/ do
  @tests.test_add_filter.create_empty_filter
 end
 
-When /^I create filled filter$/ do
+Given /^I create filled filter$/ do
   @tests.test_add_filter.create_filled_filter
 end
 
 Then /^I validate filter$/ do
-  @tests.test_add_filter.validate_filter
+  @tests.test_validate_filter.validate_filter
 end
