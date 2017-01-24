@@ -36,7 +36,7 @@ class TestAddFilter
     @screens.screen_set_filter_parameters.save_filter
   end
 
-  # Function for creating an empty filter
+  # Create an empty filter
   def create_empty_filter
     select_category 'Nekustamie īpašumi'
     select_type
@@ -61,18 +61,17 @@ def set_area
   @screens.screen_set_filter_parameters.set_parameter('PLATĪBA (M2)', '21', '212')
 end
 
+def check_filter_created
+  @screens.screen_filter_parameters.is_filter_created
+end
+
 # Save a filled filter
 def create_filled_filter
   enter_name
   set_price
   set_area
   submit_filter_parameters
+  check_filter_created
 end
-
-# See if Filter exists
-  def validate_filter
-    @screens.screen_filter_parameters.visible?
-    @screens.screen_filter_parameters.validate_filter('Ventspils2')
-  end
 
 end

@@ -43,4 +43,14 @@ class ScreenSetFilterParameters < ScreenBase
     end
   end
 
+  def is_filter_created
+    begin
+    @driver.find_element(
+      @button_save[:type], @button_save[:value]
+    )
+  rescue
+      fail('Unable to create filter, filter may already exist')
+  end
+  end
+
 end
