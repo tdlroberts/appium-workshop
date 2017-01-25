@@ -1,3 +1,6 @@
+# Ignore log file that is currently not important
+logs.log
+
 *.gem
 *.rbc
 /.config

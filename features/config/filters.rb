@@ -1,5 +1,5 @@
 require 'yaml'
-class Filter
+class Filters
   @parameters = []
 
 attr_accessor :name, :category, :sub_categories, :parameters
