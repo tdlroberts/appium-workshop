@@ -5,7 +5,7 @@ class Filter
 attr_accessor :name, :category, :sub_categories, :parameters
 
   def initialize(type)
-    #loads .yml file values
+    #other path for checking values via console
     #config = YAML.load_file('filters.yml')[type]
     config = YAML.load_file('features/config/filters.yml')[type]
     self.name = config['name']
@@ -22,8 +22,6 @@ attr_accessor :name, :category, :sub_categories, :parameters
       temp_hash = {'name' => param['parameter'][0]['name'], 'left' => param['parameter'][1]['left'], 'right' => param['parameter'][2]['right']}
       self.parameters.push temp_hash
     end
-    #@test = config['sub_categories']
-
   end
 
   def print_properties
@@ -37,12 +35,5 @@ attr_accessor :name, :category, :sub_categories, :parameters
     self.parameters.each do |param|
       print "\n\tName:\t" + param['name'] + "\n\tLeft:\t" + param['left'] + "\n\tRight:\t" + param['right'] + "\n"
     end
-
-    #puts @test[0]['sub_category'][0]['title']
-
   end
 end
-
-filter = Filter.new('property_positive')
-
-puts filter.parameters[0]['right']
