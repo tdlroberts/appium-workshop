@@ -1,9 +1,10 @@
-#require_relative '../screens/screen_base'
+require_relative '../config/filters'
 
 class TestAddFilter
   attr_accessor :driver
   def initialize(screens)
     @screens = screens
+    load_filter_data('property_positive')
   end
 
   def load_filter_data(filter_name)
@@ -27,12 +28,10 @@ class TestAddFilter
 
   # Create an empty filter
   def create_empty_filter
-    load_filter_data('property_positive')
     select_category(@data.category)
-    select_sub_category(@data.sub_categories[0]['title'], @data.sub_categories[0]['option'])
-    select_sub_category(@data.sub_categories[1]['title'], @data.sub_categories[1]['option'])
-    select_sub_category(@data.sub_categories[2]['title'], @data.sub_categories[2]['option'])
-    select_sub_category(@data.sub_categories[3]['title'], @data.sub_categories[3]['option'])
+    @data.sub_categories.each do |sub_category|
+          select_sub_category(sub_category['title'], sub_category['option'])
+    end
     submit_filter_parameters
   end
 
@@ -53,8 +52,9 @@ end
 # Save a filled filter
 def create_filled_filter
   enter_name(@data.name)
-  set_parameter(@data.parameters[0]['name'], @data.parameters[0]['left'], @data.parameters[0]['right'])
-  set_parameter(@data.parameters[1]['name'], @data.parameters[1]['left'], @data.parameters[1]['right'])
+  @data.parameters.each do |parameter|
+    set_parameter(parameter['name'], parameter['left'], parameter['right'])
+  end
   submit_filter_parameters
   check_filter_created
 end
