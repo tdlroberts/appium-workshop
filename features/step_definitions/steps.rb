@@ -21,23 +21,26 @@
 # For more on rspec assertions, check out
 # https://www.relishapp.com/rspec/rspec-expectations/docs
 
-
 Given /^I am on intro screen$/ do
- @tests.test_intro.intro_visible?
-end
-
-Given /^I am on create filter screen$/ do
   @tests.test_intro.close_intro
 end
 
-Given /^I create empty property filter$/ do
+Given /^I am on extra filters screen$/ do
+  @tests.test_intro.close_extra_filters
+end
+
+Given /^I am on create filter screen$/ do
+  @tests.test_add_filter.create_filter_screen_displayed
+end
+
+When /^I create empty property filter$/ do
  @tests.test_add_filter.create_empty_filter
 end
 
-Given /^I create filled filter$/ do
+When /^I create filled filter$/ do
   @tests.test_add_filter.create_filled_filter
 end
 
 Then /^I validate filter$/ do
-  @tests.test_validate_filter.validate_filter
+  @tests.test_add_filter.validate_created_filter
 end

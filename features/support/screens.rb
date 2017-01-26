@@ -8,6 +8,11 @@ class Screens
     @screen_intro_welcome
   end
 
+  def screen_extra_filters
+    @screen_extra_filters ||= ScreenExtraFilters.new @driver
+    @screen_extra_filters
+  end
+
   def screen_create_filter
     @screen_create_filter ||= ScreenCreateFilter.new @driver
     @screen_create_filter
