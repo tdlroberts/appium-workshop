@@ -30,27 +30,17 @@ class ScreenSetFilterParameters < ScreenBase
     ).click
   end
 
-  def set_parameter(parameter, param_left, param_right)
+  def set_parameter(parameter_hash)
     @driver.find_elements(
       @parameter_holders[:type], @parameter_holders[:value]
     #find all relative layouts in array iterate through them until a relative layout is found
     ).each do |row|
       # iterate to next layout unless it contains TextView with appropriate text
-      next unless row.find_element(@parameter_name[:type], @parameter_name[:value]).text == parameter
-      row.find_element(@parameter_left[:type], @parameter_left[:value]).send_keys(param_left)
-      row.find_element(@parameter_right[:type], @parameter_right[:value]).send_keys(param_right)
+      next unless row.find_element(@parameter_name[:type], @parameter_name[:value]).text == parameter_hash['name']
+      row.find_element(@parameter_left[:type], @parameter_left[:value]).send_keys(parameter_hash['left'])
+      row.find_element(@parameter_right[:type], @parameter_right[:value]).send_keys(parameter_hash['right'])
       break
     end
   end
-
-  def is_filter_created
-    begin
-    @driver.find_element(
-      @button_save[:type], @button_save[:value]
-    )
-  rescue
-      fail('Unable to create filter, filter may already exist')
-  end
-  end
-
+  
 end

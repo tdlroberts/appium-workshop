@@ -21,15 +21,15 @@
 # For more on rspec assertions, check out
 # https://www.relishapp.com/rspec/rspec-expectations/docs
 
-Given /^I am on intro screen$/ do
+Given /^I have opened intro screen$/ do
   @tests.test_intro.close_intro
 end
 
-Given /^I am on extra filters screen$/ do
+Given /^I have opened extra filters screen$/ do
   @tests.test_intro.close_extra_filters
 end
 
-Given /^I am on create filter screen$/ do
+Given /^I have opened create filter screen$/ do
   @tests.test_add_filter.create_filter_screen_displayed
 end
 

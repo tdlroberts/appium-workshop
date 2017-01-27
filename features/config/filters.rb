@@ -12,15 +12,16 @@ attr_accessor :name, :category, :sub_categories, :parameters
     self.category = config['category']
     self.sub_categories = []
     config['sub_categories'].each do |sub_cat|
-      # in hash array defines element 'title' with
-      temp_hash = {'title' => sub_cat['sub_category'][0]['title'], 'option' => sub_cat['sub_category'][1]['option']}
+      self.sub_categories.push sub_cat
+      #temp_hash = {'title' => sub_cat['sub_category'][0]['title'], 'option' => sub_cat['sub_category'][1]['option']}
       # adds temp_hash array at the end of sub_categories array
-      self.sub_categories.push temp_hash
+      #self.sub_categories.push temp_hash
     end
     self.parameters = []
     config['parameters'].each do |param|
-      temp_hash = {'name' => param['parameter'][0]['name'], 'left' => param['parameter'][1]['left'], 'right' => param['parameter'][2]['right']}
-      self.parameters.push temp_hash
+      self.parameters.push param
+      #temp_hash = {'name' => param['parameter'][0]['name'], 'left' => param['parameter'][1]['left'], 'right' => param['parameter'][2]['right']}
+      #self.parameters.push temp_hash
     end
   end
 
