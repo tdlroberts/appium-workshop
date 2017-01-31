@@ -6,7 +6,11 @@ Feature: Filters
     Given I have opened extra filters screen
     Given I have opened create filter screen
     When I create empty property filter
-  Scenario: User creates a filter with values
+  Scenario: User creates a Property filter with values
     Given I have opened create filter screen
-    When I create filled filter
+    When I create filled property filter
     Then I validate filter
+  Scenario: User creates a Transport filter with values
+    Given I have opened create filter screen
+    When I create filled transport filter
+    Then I validate filter    

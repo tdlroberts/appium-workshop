@@ -23,3 +23,36 @@ property_positive:
       name: 'PLATĪBA (M2)'
       left: '1'
       right: '3000'
+transport_positive:
+  name: 'Car filter'
+  category: 'Transports'
+  sub_categories:
+    - sub_category:
+      title: 'Transports'
+      option: 'Vieglie auto'
+    - sub_category:
+      title: 'Vieglie auto'
+      option: 'Lexus'
+    - sub_category:
+      title: 'Lexus'
+      option: 'Lexus IS'
+    - sub_category:
+      title: 'Darbība'
+      option: 'Visi'
+  parameters:
+    - parameter:
+      name: 'CENA (EUR)'
+      left: '1'
+      right: '20000'
+    - parameter:
+      name: 'GADS'
+      left: '1999'
+      right: '2015'
+    - parameter:
+      name: 'NOBRAUKUMS (TŪKST.)'
+      left: '10'
+      right: '500000'
+    - parameter:
+      name: 'TILPUMS'
+      left: '2'
+      right: '4'

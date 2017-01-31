@@ -4,7 +4,6 @@ class TestAddFilter
   attr_accessor :driver
   def initialize(screens)
     @screens = screens
-    load_filter_data('property_positive')
   end
 
   def load_filter_data(filter_name)
@@ -47,8 +46,8 @@ class TestAddFilter
   end
 
   def set_all_parameters
-    @data.parameters.each do |parameter|
-      set_parameter(parameter)
+    @data.parameters.each do |param|
+      set_parameter(param)
     end
   end
 
@@ -62,14 +61,16 @@ class TestAddFilter
   end
 
 # Create an empty filter
-def create_empty_filter
+def create_empty_property_filter
+  load_filter_data('property_positive')
   select_category
   navigate_to_filter_screen
   submit_filter_parameters
 end
 
 # Save a filled filter
-def create_filled_filter
+def create_filled_property_filter
+  load_filter_data('property_positive')
   select_category
   navigate_to_filter_screen
   set_filter_name
@@ -80,6 +81,16 @@ end
 
 def validate_created_filter
   validate_filter(@data.name)
+end
+
+def create_filled_transport_filter
+  load_filter_data('transport_positive')
+  select_category
+  navigate_to_filter_screen
+  set_filter_name
+  set_all_parameters
+  submit_filter_parameters
+  filter_exists
 end
 
 end

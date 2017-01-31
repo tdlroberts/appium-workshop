@@ -42,5 +42,5 @@ class ScreenSetFilterParameters < ScreenBase
       break
     end
   end
-  
+
 end

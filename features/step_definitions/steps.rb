@@ -34,11 +34,15 @@ Given /^I have opened create filter screen$/ do
 end
 
 When /^I create empty property filter$/ do
- @tests.test_add_filter.create_empty_filter
+ @tests.test_add_filter.create_empty_property_filter
 end
 
-When /^I create filled filter$/ do
-  @tests.test_add_filter.create_filled_filter
+When /^I create filled property filter$/ do
+  @tests.test_add_filter.create_filled_property_filter
+end
+
+When /^I create filled transport filter$/ do
+  @tests.test_add_filter.create_filled_transport_filter
 end
 
 Then /^I validate filter$/ do
