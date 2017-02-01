@@ -33,4 +33,13 @@ class Screens
     @screen_filter_parameters
   end
 
+  def screen_notification
+    @screen_notification ||= ScreenNotification.new @driver
+    @screen_notification
+  end
+
+  def screen_notification_menu
+    @screen_notification_menu ||= ScreenNotificationMenu.new @driver
+    @screen_notification_menu
+  end
 end

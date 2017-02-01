@@ -33,6 +33,10 @@ Given /^I have opened create filter screen$/ do
   @tests.test_add_filter.create_filter_screen_displayed
 end
 
+Given /^I have opened notification screen$/ do
+  @tests.test_add_filter.navigate_to_new_filter
+end
+
 When /^I create empty property filter$/ do
  @tests.test_add_filter.create_empty_property_filter
 end
@@ -41,12 +45,20 @@ When /^I create filled property filter$/ do
   @tests.test_add_filter.create_filled_property_filter
 end
 
-When /^I create  transport filter with missing values$/ do
-  @tests.test_add_filter.create_filter_missing_name
+When /^I create transport filter with missing values$/ do
+  @tests.test_add_filter.create_transport_filter_missing_name
 end
 
 When /^I create filled transport filter$/ do
   @tests.test_add_filter.create_filled_transport_filter
+end
+
+When /^I create filled vacancy filter$/ do
+  @tests.test_add_filter.create_vacancy_filter
+end
+
+When /^I create vacancy filter with missing values$/ do
+  @tests.test_add_filter.create_vacancy_filter_missing_name
 end
 
 Then /^I validate filter$/ do

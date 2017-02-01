@@ -19,9 +19,12 @@ class ScreenSetFilterParameters < ScreenBase
   end
 
   def set_name(text_name)
-    @driver.find_element(
-      @filter_name[:type], @filter_name[:value]
-    ).type(text_name)
+    if text_name != ""
+      @driver.find_element(
+        @filter_name[:type], @filter_name[:value]
+      ).type(text_name)
+    end
+
   end
 
   def save_filter

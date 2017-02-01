@@ -31,12 +31,10 @@ class TestAddFilter
   end
 
   def submit_filter_parameters
-    @screens.screen_set_filter_parameters.visible?
     @screens.screen_set_filter_parameters.save_filter
   end
 
   def set_filter_name
-    @screens.screen_set_filter_parameters.visible?
     @screens.screen_set_filter_parameters.set_name(@data.name)
   end
 
@@ -53,6 +51,11 @@ class TestAddFilter
 
   def filter_exists
     @screens.screen_filter_parameters.is_filter_created
+  end
+
+  def navigate_to_new_filter
+    @screens.screen_notification.open_menu
+    @screens.screen_notification_menu.open_new_filter_menu
   end
 
   def validate_filter(filter_name)
@@ -93,12 +96,29 @@ def create_filled_transport_filter
   filter_exists
 end
 
-def create_filter_missing_name
+def create_transport_filter_missing_name
   load_filter_data('transport_negative')
   select_category
   navigate_to_filter_screen
   set_filter_name
   set_all_parameters
+  submit_filter_parameters
+end
+
+def create_vacancy_filter
+  load_filter_data('vacancy_positive')
+  select_category
+  navigate_to_filter_screen
+  set_filter_name
+  submit_filter_parameters
+  filter_exists
+end
+
+def create_vacancy_filter_missing_name
+  load_filter_data('vacancy_negative')
+  select_category
+  navigate_to_filter_screen
+  set_filter_name
   submit_filter_parameters
 end
 

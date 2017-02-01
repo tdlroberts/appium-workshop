@@ -1,5 +1,5 @@
 property_positive:
-  name: 'Filter 1'
+  name: 'Property filter'
   category: 'Nekustamie īpašumi'
   sub_categories:
     - sub_category:
@@ -23,6 +23,7 @@ property_positive:
       name: 'PLATĪBA (M2)'
       left: '1'
       right: '3000'
+
 transport_positive:
   name: 'Car filter'
   category: 'Transports'
@@ -56,6 +57,7 @@ transport_positive:
       name: 'TILPUMS'
       left: '2'
       right: '4'
+
 transport_negative:
   name: ''
   category: 'Transports'
@@ -89,3 +91,19 @@ transport_negative:
       name: 'TILPUMS'
       left: '5'
       right: '6'
+
+vacancy_positive:
+  name: 'Job filter'
+  category: 'Vakances'
+  sub_categories:
+    - sub_category:
+      title: 'Vakances'
+      option: 'Kalējs'
+
+vacancy_negative:
+  name: 'vards'
+  category: 'Vakances'
+  sub_categories:
+    - sub_category:
+      title: 'Vakances'
+      option: 'Korektors'
