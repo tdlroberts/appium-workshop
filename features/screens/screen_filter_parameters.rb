@@ -33,7 +33,7 @@ class ScreenFilterParameters < ScreenBase
 
  def is_filter_created
   begin
-    @driver.find_element(@row_filter_name[:type], @row_filter_name[:value])
+    visible?
   rescue
     fail('Unable to create filter, filter may already exist')
   end

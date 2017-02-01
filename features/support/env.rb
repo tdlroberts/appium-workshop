@@ -16,11 +16,11 @@ end
 
 # TODO pass device option dynamicaly to allow simultaneous runs on different devices
 options = {
-  'port' => 5500,
-  'portboot' => 5051,
+  'port' => 5500, # ports aplikacijai
+  'portboot' => 5051, # selenium ports
   'sn' => 'P6Q7N15619000832',
   'app' => 'app.apk',
-  'appPackage' => 'com.testdevlab.notifyus'
+  'appPackage' => 'com.testdevlab.notifyus' # package nosaukums
 
 }
 server = Server.new(options)
