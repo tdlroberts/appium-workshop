@@ -18,11 +18,11 @@ class ScreenSelectSubCategory < ScreenBase
     found = true
     #cycle wont stop until end of list is reached
     while found do
-      elements = @driver.find_elements(
+      categories = @driver.find_elements(
         @rows[:type], @rows[:value]
       )
 
-    elements.each do |category|
+    categories.each do |category|
       next unless category.text == sub_name
       category.click
       found = false
@@ -31,7 +31,7 @@ class ScreenSelectSubCategory < ScreenBase
 
     #if element is not found swipe down and see if last element matches if it does end cycle
     if found
-      last_element = elements.last.text
+      last_element = categories.last.text
       height = @driver.window_size.height - 1
       # swipe from bottom of screen to top of screen
       @driver.swipe(startx: 0, starty: height, delta_x: 0, delta_y: 1, duration: 900)

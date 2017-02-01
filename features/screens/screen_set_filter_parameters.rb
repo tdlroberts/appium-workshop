@@ -31,15 +31,34 @@ class ScreenSetFilterParameters < ScreenBase
   end
 
   def set_parameter(parameter_hash)
-    @driver.find_elements(
-      @parameter_holders[:type], @parameter_holders[:value]
-    #find all relative layouts in array iterate through them until a relative layout is found
-    ).each do |row|
-      # iterate to next layout unless it contains TextView with appropriate text
-      next unless row.find_element(@parameter_name[:type], @parameter_name[:value]).text == parameter_hash['name']
-      row.find_element(@parameter_left[:type], @parameter_left[:value]).send_keys(parameter_hash['left'])
-      row.find_element(@parameter_right[:type], @parameter_right[:value]).send_keys(parameter_hash['right'])
-      break
+
+    not_found = true
+    while not_found do
+      @driver.find_elements(
+        @parameter_holders[:type], @parameter_holders[:value]
+      ).each do |row|
+        # iterate to next layout unless it contains TextView with appropriate text
+        next unless row.find_element(@parameter_name[:type], @parameter_name[:value]).text == parameter_hash['name']
+        row.find_element(@parameter_left[:type], @parameter_left[:value]).send_keys(parameter_hash['left'])
+        row.find_element(@parameter_right[:type], @parameter_right[:value]).send_keys(parameter_hash['right'])
+        @driver.hide_keyboard
+        not_found = false
+        break
+      end
+      if not_found
+        #check if bottom page element is visble
+        if (@driver.find_elements(
+          @parameter_holders[:type], @parameter_holders[:value]
+          ).last.text == "DARBĪBAS VEIDS")
+            #end cycle
+            not_found = false
+          else
+            height = @driver.window_size.height - 1
+            #swipe from bottom of screen to top of screen
+            @driver.swipe(startx: 0, starty: height, delta_x: 0, delta_y: 1, duration: 900)
+          end
+      end
+
     end
   end
 

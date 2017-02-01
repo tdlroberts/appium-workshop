@@ -93,4 +93,13 @@ def create_filled_transport_filter
   filter_exists
 end
 
+def create_filter_missing_name
+  load_filter_data('transport_negative')
+  select_category
+  navigate_to_filter_screen
+  set_filter_name
+  set_all_parameters
+  submit_filter_parameters
+end
+
 end

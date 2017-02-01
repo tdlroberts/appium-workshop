@@ -41,6 +41,10 @@ When /^I create filled property filter$/ do
   @tests.test_add_filter.create_filled_property_filter
 end
 
+When /^I create  transport filter with missing values$/ do
+  @tests.test_add_filter.create_filter_missing_name
+end
+
 When /^I create filled transport filter$/ do
   @tests.test_add_filter.create_filled_transport_filter
 end

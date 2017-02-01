@@ -56,3 +56,36 @@ transport_positive:
       name: 'TILPUMS'
       left: '2'
       right: '4'
+transport_negative:
+  name: ''
+  category: 'Transports'
+  sub_categories:
+    - sub_category:
+      title: 'Transports'
+      option: 'Vieglie auto'
+    - sub_category:
+      title: 'Vieglie auto'
+      option: 'Pontiac'
+    - sub_category:
+      title: 'Pontiac'
+      option: 'Pontiac Firebird'
+    - sub_category:
+      title: 'Darbība'
+      option: 'Pārdod'
+  parameters:
+    - parameter:
+      name: 'CENA (EUR)'
+      left: '1'
+      right: '200000'
+    - parameter:
+      name: 'GADS'
+      left: '1999'
+      right: '2000'
+    - parameter:
+      name: 'NOBRAUKUMS (TŪKST.)'
+      left: '10'
+      right: '500000'
+    - parameter:
+      name: 'TILPUMS'
+      left: '5'
+      right: '6'
