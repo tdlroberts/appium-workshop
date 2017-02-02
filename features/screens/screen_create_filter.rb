@@ -3,6 +3,7 @@ class ScreenCreateFilter < ScreenBase
   def initialize(driver)
     @title = element(:text, 'Izveidot filtru')
     @rows = element(:id, 'main_row_text')
+    @button_open_menu = element(:class, 'android.widget.ImageButton')
     @driver = driver
   end
 
@@ -18,4 +19,9 @@ class ScreenCreateFilter < ScreenBase
       end
     end
   end
+
+  def open_menu
+    @driver.find_element(@button_open_menu[:type], @button_open_menu[:value]).click
+  end
+
 end

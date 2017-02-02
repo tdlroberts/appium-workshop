@@ -53,14 +53,20 @@ class TestAddFilter
     @screens.screen_filter_parameters.is_filter_created
   end
 
-  def navigate_to_new_filter
+  def navigate_to_menu_item
     @screens.screen_notification.open_menu
-    @screens.screen_notification_menu.open_new_filter_menu
+    @screens.screen_notification_menu.open_filter_menu("Izveidot filtru")
   end
 
   def validate_filter(filter_name)
     @screens.screen_filter_parameters.visible?
     @screens.screen_filter_parameters.validate_filter(filter_name)
+  end
+
+  def clear_filters
+    @screens.screen_create_filter.open_menu
+    @screens.screen_notification_menu.open_filter_menu('Meklēšanas filtri')
+    @screens.screen_filter_parameters.delete_filters
   end
 
 # Create an empty filter

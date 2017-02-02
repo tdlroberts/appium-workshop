@@ -31,6 +31,17 @@ class ScreenFilterParameters < ScreenBase
      end
  end
 
+ # delete filters if they exist
+ def delete_filters
+   @driver.find_elements(
+    @row_filter_name[:type], @row_filter_name[:value]
+   ).reverse.each do |row|
+     row.click
+     @driver.find_element(:id, 'delete_filter').click
+     @driver.alert_accept
+   end
+ end
+
  def is_filter_created
   begin
     visible?

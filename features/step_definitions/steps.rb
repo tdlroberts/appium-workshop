@@ -23,6 +23,7 @@
 
 Given /^I have opened intro screen$/ do
   @tests.test_intro.close_intro
+  @tests.test_add_filter.clear_filters
 end
 
 Given /^I have opened extra filters screen$/ do
@@ -34,7 +35,7 @@ Given /^I have opened create filter screen$/ do
 end
 
 Given /^I have opened notification screen$/ do
-  @tests.test_add_filter.navigate_to_new_filter
+  @tests.test_add_filter.navigate_to_menu_item
 end
 
 When /^I create empty property filter$/ do
