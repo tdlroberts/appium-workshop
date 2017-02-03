@@ -13,21 +13,22 @@ Feature: Filters
     When I create filled property filter
     Then I validate filter
 
-  Scenario: User creates a Transport filter with values
-    Given I have opened create filter screen
-    When I create filled transport filter
-    Then I validate filter
-
   Scenario: User creates a Transport filter with missing values
-    Given I have opened notification screen
     Given I have opened create filter screen
     When I create transport filter with missing values
 
-  Scenario: User creates a Vacancy filter
+  Scenario: User creates a Transport filter with values
+    Given I have opened notification screen
     Given I have opened create filter screen
-    When I create filled vacancy filter
+    When I create filled transport filter
     Then I validate filter
 
   Scenario: User creates a Vacancy filter with missing values
     Given I have opened create filter screen
     When I create vacancy filter with missing values
+
+  Scenario: User creates a Vacancy filter
+    Given I have opened notification screen
+    Given I have opened create filter screen
+    When I create filled vacancy filter
+    Then I validate filter

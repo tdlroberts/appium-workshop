@@ -101,7 +101,7 @@ vacancy_positive:
       option: 'Kalējs'
 
 vacancy_negative:
-  name: 'vards'
+  name: ''
   category: 'Vakances'
   sub_categories:
     - sub_category:
