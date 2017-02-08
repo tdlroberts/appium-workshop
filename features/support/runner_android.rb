@@ -11,7 +11,7 @@ class RunnerAndroid
   def run
     #lai palaistu testus uz pareizo ieriici
     # ; - apvieno unix komandas
-    # / - apvieno strung
+    # / - apvieno string
     command = "export curdevice=#{@device} ;" \
     "export apk=#{@options['apk']} ;" \
     "export port#{@options['port']} ;" \
@@ -23,5 +23,5 @@ class RunnerAndroid
 
 end
 
-#tmp = RunnerAndroid.new('P6Q7N15619000832', {'apk' => 'apk', 'port' => '32432', 'boot_port' => '45533', 'tags' => '@tags', 'report' => 'report'})
+#tmp = RunnerAndroid.new('P6Q7N15619000832', {'apk' => 'apk', 'port' => '5500', 'boot_port' => '5501', 'tags' => '@tags', 'report' => 'report'})
 #tmp.run
