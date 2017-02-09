@@ -14,9 +14,9 @@ class RunnerAndroid
     # / - apvieno string
     command = "export curdevice=#{@device} ;" \
     "export apk=#{@options['apk']} ;" \
-    "export port#{@options['port']} ;" \
+    "export port=#{@options['port']} ;" \
     "export boot_port=#{@options['boot_port']} ;" \
-    "cucumber --tags #{@options['tags']} -f --format #{@options['report']} " \
+    "cucumber #{@options['tags']} -f --format #{@options['report']} " \
     " -o reports/#{@device_name}.#{@options['report']} ;"
     p command
   end

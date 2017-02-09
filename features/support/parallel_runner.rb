@@ -4,7 +4,8 @@ require 'yaml'
 
 class ParallelRunner
 
-  def initialize
+  def initialize(options)
+    @options = options
     all_devices
     @config = YAML.load_file('features/config/devices.yml')
     #@config = YAML.load_file('../config/devices.yml')
@@ -22,31 +23,33 @@ class ParallelRunner
 
   def test_devices
     @config['devices'].each do |device|
-      @test_devices_connected.push(device) if @adb_devices_connected.include?(device)
+      @test_devices_connected.push(device) if
+      @adb_devices_connected.include?(device)
     end
     #vias ieriices uz kuraam izpildaas testi
-    puts 'Devices where tests will be executed: ' + @test_devices_connected.to_s
+    puts 'Devices where tests will be executed: ' +
+    @test_devices_connected.to_s
   end
 
   def run_parallel
-    #@test_devices_connected.each do |device|
-    #  @options['port'] = @config['port']
-    #  @options['boot_port'] = @config['boot_port']
-    #  #tiks izveidots threads prieks katras ieriices un ielikts threads masiivaa
-    #  @threads << Thread.new do
-    #    RunnerAndroid.new(device, @options).run
-    #  end
-    #  @config['port'] += 1
-    #  @config['boot_port'] += 1
-    #end
+    @test_devices_connected.each do |device|
+      @options['port'] = @config['port']
+      @options['boot_port'] = @config['boot_port']
+      #tiks izveidots threads prieks katras ieriices un ielikts threads masiivaa
+      @threads << Thread.new do
+        RunnerAndroid.new(device, @options).run
+      end
+      #@config['port'] += 1
+      #@config['boot_port'] += 1
+    end
   end
 
   def wait_for_tests
     #threadiem ir metode join gaida kad visi tredi ir
     #pabeigusi izpildiities un tad iet taalaaak
-    #@threads.each(&:join)
+    @threads.each(&:join)
   end
 
 end
 
-temp = ParallelRunner.new
+#temp = ParallelRunner.new

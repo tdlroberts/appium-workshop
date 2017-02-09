@@ -1,4 +1,4 @@
 devices:
   - 'P6Q7N15619000832'
 port: '5500'
-boot_port: '5501'
+boot_port: '5600'
