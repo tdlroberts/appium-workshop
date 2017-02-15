@@ -32,9 +32,8 @@ class ScreenSelectSubCategory < ScreenBase
     #if element is not found swipe down and see if last element matches if it does end cycle
     if found
       last_element = categories.last.text
-      height = @driver.window_size.height - 1
-      # swipe from bottom of screen to top of screen
-      @driver.swipe(startx: 0, starty: height, delta_x: 0, delta_y: 1, duration: 900)
+      # swipe down
+      @driver.swipe(startx: 0, starty: 0, end_x: 0, end_y: 100, duration: 600)
       if(last_element == @driver.find_elements(@rows[:type], @rows[:value]).last.text)
         found = false
         fail(sub_name + " not found in list")

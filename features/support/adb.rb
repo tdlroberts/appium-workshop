@@ -17,7 +17,7 @@ class Adb
       adb_devices = adb_devices.split("\n")
       adb_devices = adb_devices.delete_if { |x| x == 'List of devices attached' }
       adb_devices = adb_devices.delete_if { |x| x == 'device' }
-      adb_devices = adb_devices.delete_if { |x| x == 'unatorized' }
+      adb_devices = adb_devices.delete_if { |x| x == 'unauthorized' }
       adb_devices = adb_devices.delete_if { |x| x == 'offline' }
       adb_devices
   end
