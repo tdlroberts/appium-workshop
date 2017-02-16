@@ -1,7 +1,6 @@
 require_relative 'runner_android'
 require_relative 'adb'
 require 'yaml'
-require 'thread'
 
 class ParallelRunner
 
@@ -40,7 +39,7 @@ class ParallelRunner
         puts "config Port: " + "#{@config['port']}"
         RunnerAndroid.new(device, @options).run
       end
-      
+
       #TODO how to improve this ?
       sleep(1)
 
