@@ -1,6 +1,7 @@
-require_relative "runner_android"
-require_relative "adb"
+require_relative 'runner_android'
+require_relative 'adb'
 require 'yaml'
+require 'thread'
 
 class ParallelRunner
 
@@ -23,24 +24,28 @@ class ParallelRunner
 
   def test_devices
     @config['devices'].each do |device|
-      @test_devices_connected.push(device) if
-      @adb_devices_connected.include?(device)
+      @test_devices_connected.push(device) if @adb_devices_connected.include?(device)
     end
     #vias ieriices uz kuraam izpildaas testi
-    puts 'Devices where tests will be executed: ' +
-    @test_devices_connected.to_s
+    puts 'Devices where tests will be executed: ' + @test_devices_connected.to_s
   end
 
   def run_parallel
     @test_devices_connected.each do |device|
       @options['port'] = @config['port']
       @options['boot_port'] = @config['boot_port']
-      #tiks izveidots threads prieks katras ieriices un ielikts threads masiivaa
+
       @threads << Thread.new do
+        puts "options Port: " + "#{@options['port']}"
+        puts "config Port: " + "#{@config['port']}"
         RunnerAndroid.new(device, @options).run
       end
-      #@config['port'] += 1
-      #@config['boot_port'] += 1
+      
+      #TODO how to improve this ?
+      sleep(1)
+
+      @config['port'] += 1
+      @config['boot_port'] += 1
     end
   end
 
@@ -51,5 +56,3 @@ class ParallelRunner
   end
 
 end
-
-#temp = ParallelRunner.new

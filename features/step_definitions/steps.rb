@@ -26,6 +26,13 @@ Given /^I have opened intro screen$/ do
   @tests.test_add_filter.clear_filters
 end
 
+# Given ...(.*?)...
+# filter_dict = {'landline' => 'property_positive'}
+# filter_dict['transport] = 'transport_negative'
+# filter_dict['vacancy'] = 'vacancy_positive'
+# use in function
+# type
+
 Given /^I have opened extra filters screen$/ do
   @tests.test_intro.close_extra_filters
 end

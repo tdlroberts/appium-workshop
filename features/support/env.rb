@@ -14,12 +14,21 @@ require_relative '../screens/screen_base'
 class AppiumWorld
 end
 
+#p ENV['curdevice']
+puts "Port: " + ENV['port']
+puts "Boot port: " + ENV['boot_port']
+puts "Device" + ENV['curdevice']
+puts "APK: " + ENV['apk']
 # TODO pass device option dynamicaly to allow simultaneous runs on different devices
 options = {
-  'port' => 5500, # ports aplikacijai
-  'portboot' => 5051, # selenium ports
-  'sn' => 'P6Q7N15619000832',
-  'app' => 'app.apk',
+  #'port' => 5500, # ports aplikacijai
+  #'portboot' => 5051, # selenium ports
+  #'sn' => 'P6Q7N15619000832',
+  #'app' => 'app.apk',
+  'port' => ENV['port'], # ports aplikacijai
+  'portboot' => ENV['boot_port'], # selenium ports
+  'sn' => ENV['curdevice'],
+  'app' => ENV['apk'],
   'appPackage' => 'com.testdevlab.notifyus' # package nosaukums
 
 }

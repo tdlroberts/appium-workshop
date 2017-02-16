@@ -1,4 +1,4 @@
-require_relative "adb" #pieprasa failu
+require_relative 'adb' #pieprasa failu
 
 class RunnerAndroid
 
@@ -12,13 +12,35 @@ class RunnerAndroid
     #lai palaistu testus uz pareizo ieriici
     # ; - apvieno unix komandas
     # / - apvieno string
+
+    puts "Port: " + "#{@options['port']}"
+    puts "Boot port: " + "#{@options['boot_port']}"
+
     command = "export curdevice=#{@device} ;" \
     "export apk=#{@options['apk']} ;" \
     "export port=#{@options['port']} ;" \
     "export boot_port=#{@options['boot_port']} ;" \
-    "cucumber #{@options['tags']} -f --format #{@options['report']} " \
-    " -o reports/#{@device_name}.#{@options['report']} ;"
+    "cucumber #{@options['tags']} --format #{@options['report']} " \
+    " -o reports/#{@device_name}.#{@options['report']}"
+
+    #if(@device == "P6Q7N15619000832")
+    #  command = "export curdevice=#{@device} ;" \
+    #  "export apk=#{@options['apk']} ;" \
+    #  "export port=5500 ;" \
+    #  "export boot_port=5600 ;" \
+    #  "cucumber #{@options['tags']} --format #{@options['report']} " \
+    #  " -o reports/#{@device_name}.#{@options['report']}"
+    #else
+    #  command = "export curdevice=#{@device} ;" \
+    #  "export apk=#{@options['apk']} ;" \
+    #  "export port=5501 ;" \
+    #  "export boot_port=5601 ;" \
+    #  "cucumber #{@options['tags']} --format #{@options['report']} " \
+    #  " -o reports/#{@device_name}.#{@options['report']}"
+    #end
+
     p command
+    `#{command}`
   end
 
 end
